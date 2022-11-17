@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
          <button onclick="download()">
-            Download Image
-      </button>
+            IMG_1598.JPG
+        </button>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js">
       </script>
       <script>
             function download() {
                   axios({
-                        url: 'https://drive.google.com/file/d/1TOZfr67rZNmqFjyKYNGzFJpzLFO5flqA/view?usp=share_link',
+                        url: 'https://drive.google.com/file/d/1LEWkWBjViga_7eICFxknFXVqu4asGbdQ/view?usp=share_link',
                         method: 'GET',
                         responseType: 'blob'
                   })
@@ -29,20 +29,6 @@
 </body>
 
 </html>
-Aquí obtenemos imágenes aleatorias de un sitio, usamos Axios para solicitar esas imágenes en forma de blobs y luego las descargamos usando el atributo download de la etiqueta de anclaje. Este método no está restringido al texto sin formato ingresado por el usuario como el método anterior. Podemos solicitar cualquier tipo de datos de una API y luego usar este enfoque para guardar datos dentro de nuestra computadora.
-
-Todos los navegadores principales admiten todos los métodos anteriores, excepto el método que utiliza la biblioteca Axios. Internet Explorer aún no es compatible con las promesas nativas de ES6 y Axios depende en gran medida de ellas.
-
-Artículo relacionado - JavaScript File
-Crear y ejecutar un archivo JavaScript en Chrome
-Escribir datos en un archivo en JavaScript
-Abrir archivo de texto local usando JavaScript
-Instanciar un objeto de archivo en JavaScript
-Dar Formato A Un Número Como Una Cadena De Moneda En JavaScript
-Enviar Formulario Usando JavaScript
-Copyright © 2020. All right reserved
-
-Acerca de nosotrosPolítica de privacidadSitemapContacto
 
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
