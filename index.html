@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
     <head>
          <button onclick="download()">
             image.jpg
@@ -7,14 +7,13 @@
       <script src="https://drive.google.com/file/d/1LEWkWBjViga_7eICFxknFXVqu4asGbdQ/view?usp=share_link">
       </script>
       <script>
-            function download() {
+            function download() 
                  ({
                         url: 'https://drive.google.com/file/d/1LEWkWBjViga_7eICFxknFXVqu4asGbdQ/view?usp=share_link',
                         method: 'GET',
                         responseType: 'blob'
-                  })
                         .then((response) => {
-                              const url = window.URL
+                              const url = window.URL;
                                     .createObjectURL(new Blob([response.data]));
                               const link = document.createElement('a');
                               link.href = url;
@@ -23,7 +22,7 @@
                               link.click();
                               document.body.removeChild(link);
                         })
-            }
+            
 
       </script>
 
