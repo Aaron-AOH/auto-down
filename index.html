@@ -14,7 +14,7 @@ oReq.responseType = "blob";
 
 // Cuando finaliza la solicitud del archivo
 // Depende de usted, la configuración de eventos de error, etc.
-oReq.onload = function() {
+oReq.donload = function() {
      // Una vez descargado el archivo, abre una nueva ventana con el PDF
      // Recuerde permitir los POP-UPS en su navegador
     var file = new Blob([oReq.response], { 
