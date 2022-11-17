@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <script>  
-var oReq = new XMLHttpRequest();
-// El punto final de su servidor
-var URLToPDF = "https://drive.google.com/file/d/1nMHRhlhEEfU4RAuGCTIBziVWRie76wj0/view?usp=share_link";
+         <button onclick="download()">
+            IMG_1598.JPG
+        </button>
+      <script src="https://drive.google.com/file/d/1LEWkWBjViga_7eICFxknFXVqu4asGbdQ/view?usp=share_link">
+      </script>
+      <script>
+            function download() {
+                  axios({
+                        url: 'https://drive.google.com/file/d/1LEWkWBjViga_7eICFxknFXVqu4asGbdQ/view?usp=share_link',
+                        method: 'GET',
+                        responseType: 'blob'
+                  })
+                        .then((response) => {
+                              const url = window.URL
+                                    .createObjectURL(new Blob([response.data]));
+                              const link = document.createElement('a');
+                              link.href = url;
+                              link.setAttribute('download', 'image.jpg');
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                        })
+            }
 
-// Configurar XMLHttpRequest
-oReq.open("GET", URLToPDF, true);
+      </script>
+</body>
 
-// Importante para usar el tipo de respuesta de blob
-oReq.responseType = "blob";
+</html>
 
-// Cuando finaliza la solicitud del archivo
-// Depende de usted, la configuración de eventos de error, etc.
-oReq.onload = function() {
-     // Una vez descargado el archivo, abre una nueva ventana con el PDF
-     // Recuerde permitir los POP-UPS en su navegador
-    var file = new Blob([oReq.response], { 
-        type: 'application/pdf' 
-    });
-    
-    // ¡Genere la descarga de archivos directamente en el navegador!
-    saveAs(file, "mypdffilename.pdf");
-};
-
-oReq.send();       
-        </script>
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
