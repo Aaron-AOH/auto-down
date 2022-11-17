@@ -1,32 +1,49 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <script>  
-var oReq = new XMLHttpRequest();
-// El punto final de su servidor
-var URLToPDF = "https://drive.google.com/file/d/1rlyvd4RObDtXAxEPSj-7dTg1bwp7IaE0/view?usp=share_link";
+         <button onclick="download()">
+            Download Image
+      </button>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js">
+      </script>
+      <script>
+            function download() {
+                  axios({
+                        url: 'https://drive.google.com/file/d/1TOZfr67rZNmqFjyKYNGzFJpzLFO5flqA/view?usp=share_link',
+                        method: 'GET',
+                        responseType: 'blob'
+                  })
+                        .then((response) => {
+                              const url = window.URL
+                                    .createObjectURL(new Blob([response.data]));
+                              const link = document.createElement('a');
+                              link.href = url;
+                              link.setAttribute('download', 'image.jpg');
+                              document.body.appendChild(link);
+                              link.click();
+                              document.body.removeChild(link);
+                        })
+            }
 
-// Configurar XMLHttpRequest
-oReq.open("GET", URLToPDF, true);
+      </script>
+</body>
 
-// Importante para usar el tipo de respuesta de blob
-oReq.responseType = "blob";
+</html>
+Aquí obtenemos imágenes aleatorias de un sitio, usamos Axios para solicitar esas imágenes en forma de blobs y luego las descargamos usando el atributo download de la etiqueta de anclaje. Este método no está restringido al texto sin formato ingresado por el usuario como el método anterior. Podemos solicitar cualquier tipo de datos de una API y luego usar este enfoque para guardar datos dentro de nuestra computadora.
 
-// Cuando finaliza la solicitud del archivo
-// Depende de usted, la configuración de eventos de error, etc.
-oReq.donload = function() {
-     // Una vez descargado el archivo, abre una nueva ventana con el PDF
-     // Recuerde permitir los POP-UPS en su navegador
-    var file = new Blob([oReq.response], { 
-        type: 'application/pdf' 
-    });
-    
-    // ¡Genere la descarga de archivos directamente en el navegador!
-    saveAs(file, "mypdffilename.pdf");
-};
+Todos los navegadores principales admiten todos los métodos anteriores, excepto el método que utiliza la biblioteca Axios. Internet Explorer aún no es compatible con las promesas nativas de ES6 y Axios depende en gran medida de ellas.
 
-oReq.send();       
-        </script>
+Artículo relacionado - JavaScript File
+Crear y ejecutar un archivo JavaScript en Chrome
+Escribir datos en un archivo en JavaScript
+Abrir archivo de texto local usando JavaScript
+Instanciar un objeto de archivo en JavaScript
+Dar Formato A Un Número Como Una Cadena De Moneda En JavaScript
+Enviar Formulario Usando JavaScript
+Copyright © 2020. All right reserved
+
+Acerca de nosotrosPolítica de privacidadSitemapContacto
+
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta http-equiv="Pragma" content="no-cache" />
         <meta http-equiv="Expires" content="0" />
